@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Results System</title>
+</head>
+<body>
+  <h2>Enter Student Marks</h2>
+  <form>
+    Name: <input type="text" id="name"><br><br>
+    Physics: <input type="number" id="physics"><br><br>
+    Mathematics: <input type="number" id="maths"><br><br>
+    Computer: <input type="number" id="computer"><br><br>
+    <button type="button" onclick="saveResult()">Save Result</button>
+  </form>
+
+  <h2>Search by Subject</h2>
+  <input type="text" id="subject" placeholder="Enter subject (Physics/Mathematics/Computer)">
+  <button type="button" onclick="searchSubject()">Search</button>
+
+  <h3>Output:</h3>
+  <p id="output"></p>
+
+  <script>
+    let student = {};
+
+    function saveResult() {
+      student.name = document.getElementById("name").value;
+      student.physics = Number(document.getElementById("physics").value);
+      student.maths = Number(document.getElementById("maths").value);
+      student.computer = Number(document.getElementById("computer").value);
+      alert("Results saved for " + student.name);
+    }
+
+    function searchSubject() {
+      let subject = document.getElementById("subject").value.toLowerCase();
+      let result;
+
+      if (subject === "physics") result = student.physics;
+      else if (subject === "mathematics") result = student.maths;
+      else if (subject === "computer") result = student.computer;
+      else result = "Subject not found!";
+
+      document.getElementById("output").innerText =
+        student.name + " scored " + result + " in " + subject;
+    }
+  </script>
+</body>
+</html>
